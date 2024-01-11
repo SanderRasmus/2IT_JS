@@ -1,0 +1,27 @@
+.Timer {
+    display: flex;
+    justify-content: center;
+}
+
+.Timer-Container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 40px;
+    border: 2px solid black;
+    width: 400px;
+}
+
+.Timer-Container > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Timer-Container > div > h3:first-child {
+    font-size: 30px;
+}
+
+.Timer-Container > div > h3:last-child {
+    margin-top: -22px;
+}
