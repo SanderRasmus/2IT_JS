@@ -12,7 +12,6 @@ const Blackjack = 21;
 
 let DealerKortVerdi = 0;
 let Spillerkortverdi = 0;
-let spilltapt = false
 
 const kort = [
     { kortnavn: 'kortstokk_hjerter/H01.png', verdi: 1},
@@ -33,20 +32,40 @@ const kort = [
 ståBtn.addEventListener("click", BlackStå);
 hitBtn.addEventListener("click", BlackHit);
 
+
 function BlackStå() {
+
+    DealerTrekk();
 
     if(DealerKortVerdi > Spillerkortverdi && DealerKortVerdi <= 21) {
         UtskriftEl.innerHTML = "Dealeren har vunnet spillet!"
+        SpillSlutt()
     }
 
-    if(spilltapt === true) {
-        ståBtn.removeEventListener("click", BlackStå);
-        hitBtn.removeEventListener("click", BlackHit);
-        UtskriftEl.innerHTML = "Du har tapt spillet!"
+    if(DealerkortTrekk == Blackjack) {
+        UtskriftEl.innerHTML = "Dealeren har fått blackjack og har vunnet"
+        SpillSlutt()
     }
+
 };
 
 function BlackHit() {
+    SpillerTrekk();
+
+    DealerTrekk();
+
+
+    if(Spillerkortverdi == Blackjack) {
+        UtskriftEl.innerHTML = "Du har fått Blackjack! Du har vunnet"
+        SpillSlutt()
+    }
+    else if(DealerkortTrekk == Blackjack) {
+        UtskriftEl.innerHTML = "Dealeren har fått blackjack og har vunnet"
+        SpillSlutt()
+    }
+};
+
+function SpillerTrekk() {
     const SpillerkortTrekk = kort[Math.floor(Math.random() * kort.length)];
     Spillerkortverdi += SpillerkortTrekk.verdi;
 
@@ -58,6 +77,13 @@ function BlackHit() {
 
     spillerscoreEl.innerHTML = (`Din score er ${Spillerkortverdi}`);
 
+    if(Spillerkortverdi > 21) {
+        UtskriftEl.innerHTML = "Du har tapt spillet!";
+        SpillSlutt()
+    }
+}
+
+function DealerTrekk () {
     const DealerkortTrekk = kort[Math.floor(Math.random() * kort.length)];
     DealerKortVerdi += DealerkortTrekk.verdi;
 
@@ -69,22 +95,13 @@ function BlackHit() {
 
     dealerscoreEl.innerHTML = (`Dealeren's score er ${DealerKortVerdi}`);
 
-
-
-    if(Spillerkortverdi > 21) {
-        spilltapt = true
-        UtskriftEl.innerHTML = "Du har tapt spillet!";
-    }
-    else if(Spillerkortverdi == Blackjack) {
-        UtskriftEl.innerHTML = "Du har fått Blackjack! Du har vunnet"
-    }
-    else if(DealerKortVerdi > 21) {
+    if(DealerKortVerdi > 21) {
         UtskriftEl.innerHTML = "Dealer er busted, Du har vunnet!"
+        SpillSlutt()
     }
+}
 
-    if(spilltapt === true) {
-        ståBtn.removeEventListener("click", BlackStå);
-        hitBtn.removeEventListener("click", BlackHit);
-        UtskriftEl.innerHTML = "Du har tapt spillet!"
-    };
-};
+function SpillSlutt() {
+    ståBtn.removeEventListener("click", BlackStå);
+    hitBtn.removeEventListener("click", BlackHit);
+}
