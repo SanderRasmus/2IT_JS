@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrukerInput - 01.02.2024</title>
+    <link rel="stylesheet" href="/01.02.2024/style.css">
+</head>
+<body>
+
+    <section class="f-col-center">
+        <div class="Blogg-Container f-col-center">
+            <p id="OpprettInnlegg">Opprett Blogg Innlegg</p>
+            <label>Overskrift
+                <input class="Innlegg" id="Overskrift-Innlegg" type="text" placeholder="Overskrift">
+            </label>
+            <label>Tekst
+                <textarea class="Innlegg" id="Tekst-Innlegg" placeholder="Skriv inn en kort tekst"></textarea>
+            </label>
+            <label>Forfatter
+                <input class="Innlegg" id="Forfatter-Innlegg" type="text" placeholder="Forfatter">
+            </label>
+            <button id="OpprettBtn">Opprett Tekst</button>
+        </div>
+    </section>
+
+    <main>
+        <div id="Innlegg-Container"></div>
+    </main>
+
+    <script src="/01.02.2024/input.js"></script>
+</body>
+</html>
