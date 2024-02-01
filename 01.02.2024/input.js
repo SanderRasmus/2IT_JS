@@ -9,23 +9,28 @@ let artikler = []
 LagtekstBtn.addEventListener("click", OpprettInnlegg)
 
 function OpprettInnlegg() {
-    let Tekstboks = document.createElement("div");
-    let elementer = [
-        { input: OverskriftEl, id: "Overskrift" },
-        { input: TekstEl, id: "Tekst" },
-        { input: ForfatterEl, id: "Forfatter" },
-    ]
-
-    for (let i = 0; i < elementer.length; i++) {
-        let element = document.createElement("p");
-        element.innerHTML = elementer[i].input.value;
-        element.id = elementer[i].id;
-        Tekstboks.appendChild(element);
+    if(OverskriftEl.value == "" || TekstEl.value == "" || ForfatterEl.value == "") {
+        return "Du har ikke fylt ut alle feltene"
     }
-
-    artikler.unshift(Tekstboks)
-    TekstboksEl.appendChild(Tekstboks);
-    SorterInnlegg();
+    else {
+        let Tekstboks = document.createElement("div");
+        let elementer = [
+            { input: OverskriftEl, id: "Overskrift" },
+            { input: TekstEl, id: "Tekst" },
+            { input: ForfatterEl, id: "Forfatter" },
+        ]
+    
+        for (let i = 0; i < elementer.length; i++) {
+            let element = document.createElement("p");
+            element.innerHTML = elementer[i].input.value;
+            element.id = elementer[i].id;
+            Tekstboks.appendChild(element);
+        }
+    
+        artikler.unshift(Tekstboks)
+        TekstboksEl.appendChild(Tekstboks);
+        SorterInnlegg();
+    }
 }
 
 function SorterInnlegg() {
