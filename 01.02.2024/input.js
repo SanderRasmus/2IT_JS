@@ -38,8 +38,6 @@ function SorterInnlegg() {
         TekstboksEl.removeChild(TekstboksEl.firstChild);
     }
 
-    artikler.sort();
-
     for(let i = 0; i < artikler.length; i++) {
         TekstboksEl.appendChild(artikler[i])
     }
