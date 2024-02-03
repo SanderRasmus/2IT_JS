@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(148, 191, 187);
+    font-family: 'Poppins', sans-serif;
+}
+
+.f-col {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.f-row {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+section {
+    margin-top: 50px;
+}
+
+.Tall-Container {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-radius: 12px;
+    gap: 35px;
+}
+
+.Tall-Container > div {
+    position: relative;
+    top: 50px;
+    width: 400px;
+    height: 100px;
+}
+
+#TrukketTall-Container {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+button {
+    width: 100px;
+    height: 60px;
+    font-size: 16px;
+    color: white;
+    font-family: inherit;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#NullstillBtn {
+    background-color: red;
+}
+
+#TrekkBtn {
+    background-color: green;
+}
