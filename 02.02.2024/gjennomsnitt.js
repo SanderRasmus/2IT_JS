@@ -32,6 +32,7 @@ function NullstillProgram() {
 }
 
 function Gjennomsnitt() {
+    sum = 0
     for(let i = 0; i < Trukkettall.length; i++) {
         sum += Trukkettall[i];
     }
