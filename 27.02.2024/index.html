@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moduler og JSON - Sander</title>
+</head>
+<body>
+    <script type="module">
+        import {Bil, Elbil} from "./biler.js";
+        import hunder from "./hunder.json" assert {type: "json"};
+
+        console.log( hunder[0].navn ) 
+
+        for(const hund of hunder){
+            console.log(`${hund.navn} er en ${hund.farge} ${hund.rase} eid av ${hund.eier.navn}.`)
+        }
+
+        const biler = [];
+
+        biler.push( new Bil("Porsche", "911", "svart", 290, 0) );
+        biler.push( new Bil("Ferrari", "F8 Spider", "rød", 340, 0) );
+        biler.push( new Bil("Ford", "Mustang Mach 1", "blå", 270, 0) );
+        biler.push( new Elbil("Ford", "Mustang Mach e", "grå", 180, 0, 68, 100));
+        biler.push( new Elbil("Ferrari", "F8 Spider", "hvit", 260, 0, 50, 70) );
+
+        for(let i of biler) {
+            console.log(i.presenter());
+        }
+
+    </script>
+</body>
+</html>
